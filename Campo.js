@@ -1,9 +1,6 @@
 const atualizarCampo = (novo, validador, _internal, _external) => {
-    const _isValid = validador(novo);
 
-    _internal.campo = (_isValid) ? novo : _internal.campo;
-    _internal.lastOpAcceppted = _isValid;
-
+    _internal.campo = (_internal.lastOpAcceppted = validador(novo)) ? novo : _internal.campo;
     return _external;
 };
 
